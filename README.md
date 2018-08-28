@@ -1,4 +1,4 @@
-# generator-preact-bare [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-preact-bare [![NPM](https://nodei.co/npm/generator-preact-bare.png)](https://nodei.co/npm/generator-preact-bare/)
 > Barebones preact without react-scripts, minimal webpack setup
 
 ## Installation
