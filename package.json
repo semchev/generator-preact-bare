@@ -1,6 +1,6 @@
 {
   "name": "generator-preact-bare",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Barebones preact without react-scripts, minimal webpack setup",
   "homepage": "",
   "author": {
@@ -79,6 +79,6 @@
       "prettier"
     ]
   },
-  "repository": "semchev/generator-preact-bare",
+  "repository": "github.com/semchev/generator-preact-bare",
   "license": "MIT"
 }
