@@ -1,7 +1,7 @@
 'use strict';
 const Generator = require('yeoman-generator');
 const commandExists = require('command-exists');
-const open = require('open');
+const os = require('os');
 
 module.exports = class extends Generator {
   prompting() {
@@ -116,7 +116,24 @@ module.exports = class extends Generator {
   end() {
     // Open in editor if requested.
     if (this.props.openEditor) {
-      open(this.destinationPath('src/index.js'));
+      const platform = os.platform();
+      let cmd = '', args = [];
+      
+      if(platform === 'darwin') {
+        cmd = 'open'; 
+        args = [this.destinationPath('src/index.js')];
+      } else if(platform === 'win32') {
+        cmd = 'start';
+        args = [this.destinationPath('src/index.js')];
+      } else {
+        cmd = 'xdg-open'; 
+        args = [
+          this.destinationPath('src/index.js'), 
+          '&>', 
+          '/dev/null' 
+        ];
+      }
+      this.spawnCommand(cmd, args);
     }
 
     // Run dev server if requested.
