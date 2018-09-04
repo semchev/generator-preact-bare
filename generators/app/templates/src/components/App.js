@@ -1,4 +1,4 @@
-import { h, render, Component } from 'preact';
+<% if(react) { %>import React, { Component } from 'react';<% } else {%>import { h, render, Component } from 'preact';<% } %>
 
 class App extends Component {
     constructor(props) {

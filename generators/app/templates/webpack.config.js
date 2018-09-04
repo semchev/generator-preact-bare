@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');<%if (react) {%>
+const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');<% } %>
 
 module.exports = {
     entry: path.resolve(__dirname, 'src', 'index.js'),
@@ -9,11 +10,11 @@ module.exports = {
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js']<% if(!react) { %>,
         alias: {
             'react': 'preact-compat',
             'react-dom': 'preact-compat'
-        }
+        }<% } %>
     },
     module: {
         rules: [
@@ -40,7 +41,8 @@ module.exports = {
             minify: true,
             alwaysWriteToDisk: true
         }),
-        new HtmlWebpackHarddiskPlugin()
+        new HtmlWebpackHarddiskPlugin()<% if(react) { %>,
+        new HtmlWebpackRootPlugin()<% } %>
     ],
     devServer: {
         contentBase: './src',
